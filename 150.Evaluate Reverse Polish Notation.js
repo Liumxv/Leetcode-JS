@@ -37,12 +37,12 @@ var evalRPN = function(tokens) {
 	for(index in tokens){
 		let token = tokens[index]
 		if (isOperator(tokens[index])) {
-			let right = parseInt(stack.pop())
-			let left = parseInt(stack.pop())
-			stack.push(calculator(left, right, token))
+			let right = stack.pop()
+			let left = stack.pop();
+			stack.push(calculator(parseInt(left), parseInt(right), token))
 		}else{
-			stack.push(parseInt(token))
+			stack.push(token)
 		}
 	}
-	return stack.pop()
+	return parseInt(stack.pop())
 };
